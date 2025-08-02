@@ -1,5 +1,3 @@
-// src/app/core/guards/auth.guard.ts
-
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -14,8 +12,9 @@ import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 })
 export class AuthGuard extends KeycloakAuthGuard {
   constructor(
+    // Adicione 'override' aqui, pois o compilador está exigindo
     protected override readonly router: Router,
-    protected override readonly keycloak: KeycloakService 
+    protected override readonly keycloak: KeycloakService
   ) {
     super(router, keycloak);
   }
