@@ -1,64 +1,56 @@
-# Teste-Angular
+🚀 Meu Projeto de Gestão de Processos Jurídicos
+Olá! Este é o repositório do meu projeto prático de desenvolvedor Frontend Angular, focado na gestão de processos jurídicos. O objetivo é construir uma Single Page Application (SPA) completa, com autenticação, um dashboard interativo, integração com APIs externas e funcionalidades de CRUD.
 
-Gestão de Processos Jurídicos (Teste Prático Frontend Angular)
-Este projeto é uma Single Page Application (SPA) desenvolvida em Angular para a gestão de processos jurídicos. O objetivo é construir um sistema com autenticação robusta via Keycloak, um dashboard com estatísticas, integração com a API pública do DataJud, e funcionalidades de CRUD para partes interessadas.
+Você pode encontrar o código-fonte aqui: https://github.com/arthurgit1/Teste-Angular
 
-🚀 Status Atual do Projeto
-Até o momento, a base do projeto foi estabelecida com as seguintes configurações e funcionalidades implementadas:
+🛠️ As Tecnologias Que Estou Usando
+Para este projeto, estou trabalhando com um conjunto de tecnologias modernas e robustas:
 
-🛠️ Tecnologias Principais
-Angular 19: Framework principal para o desenvolvimento da SPA.
+Angular 19: O coração da aplicação, me ajudando a construir uma SPA dinâmica.
 
-TypeScript: Linguagem de programação tipada para maior robustez do código.
+TypeScript: Garantindo que meu código seja mais seguro e fácil de manter com tipagem forte.
 
-TailwindCSS: Framework CSS utilitário para estilização rápida e responsiva.
+TailwindCSS: Para estilizar a aplicação de forma rápida e responsiva, focando na experiência do usuário em diferentes telas.
 
-PrimeNG: Biblioteca de componentes UI para Angular, garantindo uma interface rica e consistente.
+PrimeNG: Uma biblioteca de componentes UI que me ajuda a criar interfaces ricas e padronizadas com menos esforço.
 
-Keycloak com keycloak-angular: Solução de autenticação e autorização para segurança da aplicação.
+Keycloak com keycloak-angular: Essencial para gerenciar a autenticação e autorização dos usuários de forma segura.
 
-✅ Funcionalidades Implementadas (Base)
-Configuração do Projeto:
+✅ O Que Eu Já Consegui Fazer (e os Desafios!)
+Até agora, consegui estabelecer uma base sólida para o projeto, mas não foi sem alguns desafios!
 
-Criação de um novo projeto Angular 19.
+1. Configuração Inicial do Projeto
+Comecei criando o projeto Angular 19 do zero.
 
-Instalação e configuração do TailwindCSS para estilização.
+Consegui instalar e configurar o TailwindCSS e o PrimeNG. Confesso que tive alguns erros de ERESOLVE por incompatibilidade de versões, mas com um pouco de persistência (e, às vezes, o --force do npm!), consegui fazer tudo funcionar.
 
-Instalação e configuração do PrimeNG para componentes de UI.
+Organizei a estrutura de pastas em core, shared e features para manter o código modular e limpo.
 
-Estrutura de pastas modular (core, shared, features) para organização do código.
+2. Autenticação com Keycloak
+A integração com o Keycloak foi um ponto crucial. Configurei o APP_INITIALIZER para que o Keycloak seja inicializado antes da aplicação, garantindo que o usuário seja redirecionado para a tela de login se não estiver autenticado.
 
-Autenticação com Keycloak:
+Criei um AuthGuard para proteger as rotas. Tive alguns "vai e volta" com o modificador override no construtor, mas finalmente consegui alinhar as versões do TypeScript e do keycloak-angular.
 
-Integração inicial com o Keycloak usando a biblioteca keycloak-angular.
+Implementei as funções de Login e Logout no AppComponent, que funcionam como esperado, redirecionando o usuário após a autenticação.
 
-Configuração do APP_INITIALIZER para inicializar o Keycloak antes do carregamento da aplicação, garantindo que o usuário seja redirecionado para a tela de login se não estiver autenticado (onLoad: 'login-required').
+3. Módulo Dashboard (Estrutura Básica)
+Criei o DashboardModule e o DashboardComponent. Aqui, enfrentei um desafio com o componente standalone. Meu projeto foi gerado sem essa flag por padrão, mas o componente acabou sendo gerado como standalone, causando conflitos com o NgModule. Após ajustar o dashboard.component.ts para não ser standalone, tudo se resolveu!
 
-Criação de um AuthGuard básico para proteção de rotas (ainda não aplicado em todas as rotas).
+Estruturei o dashboard com um layout responsivo usando TailwindCSS.
 
-Implementação de funcionalidade de Login e Logout no AppComponent, permitindo que o usuário entre e saia do sistema.
+Exibi cartões de estatísticas (p-card do PrimeNG) com dados mockados para o total de partes interessadas e processos DataJud.
 
-Módulo Dashboard (Estrutura Básica):
+Adicionei uma tabela (p-table do PrimeNG) para mostrar os últimos 5 processos, também com dados de exemplo.
 
-Criação do módulo DashboardModule e do componente DashboardComponent.
-
-Estrutura básica do dashboard com layout responsivo usando TailwindCSS.
-
-Exibição de cartões de estatísticas (p-card do PrimeNG) com dados mockados (total de partes interessadas, total de processos DataJud).
-
-Tabela (p-table do PrimeNG) para listar os últimos 5 processos (com dados mockados).
-
-🚀 Como Rodar o Projeto
-Siga os passos abaixo para configurar e executar a aplicação em seu ambiente local:
+⚙️ Como Rodar Este Projeto no Seu Computador
+Se você quiser testar o que eu fiz até agora, siga estes passos:
 
 Pré-requisitos
-Node.js e npm: Certifique-se de ter o Node.js (versão 18 ou superior) e o npm instalados em sua máquina.
+Node.js e npm: Tenha o Node.js (versão 18 ou superior) e o npm instalados.
 
-Angular CLI: Instale o Angular CLI globalmente:
+Angular CLI: Instale-o globalmente: npm install -g @angular/cli
 
-npm install -g @angular/cli
-
-Servidor Keycloak: Você precisará de uma instância do Keycloak rodando. Configure um realm e um client para a sua aplicação.
+Servidor Keycloak: Essencial! Você precisará de uma instância do Keycloak rodando. Crie um realm e um client para a sua aplicação.
 
 URL do Keycloak: Geralmente http://localhost:8080/auth
 
@@ -66,57 +58,37 @@ Realm: O nome do seu realm (ex: meu-realm)
 
 Client ID: O ID do seu cliente (ex: minha-app-angular)
 
-Importante: Atualize essas informações no arquivo src/app/core/keycloak-initializer.ts.
+Lembre-se: Atualize essas informações no arquivo src/app/core/keycloak-initializer.ts antes de rodar.
 
 Instalação
 Clone o repositório:
 
-git clone [URL_DO_SEU_REPOSITORIO]
-cd gestao-juridica
+git clone https://github.com/arthurgit1/Teste-Angular
+cd Teste-Angular
 
 Instale as dependências:
 
 npm install
 
-Observação: Durante a instalação, pode ser que você tenha encontrado erros de ERESOLVE devido a conflitos de versão entre o Angular 19 e as versões mais recentes do PrimeNG e Keycloak. Isso foi contornado instalando versões específicas ou usando a flag --force (para PrimeNG) e garantindo a compatibilidade de versão para keycloak-angular. Se o erro persistir, tente:
+Dica: Se encontrar erros de ERESOLVE (conflitos de versão), tente instalar as dependências específicas que funcionaram para mim:
 
 npm install primeng@17.18.0 primeicons --force
-npm install keycloak-angular@19.0.0 keycloak-js --force
+npm install keycloak-angular@19.0.0 keycloak-js
 
 Execução
 Para iniciar o servidor de desenvolvimento do Angular:
 
 ng serve
 
-A aplicação estará disponível em http://localhost:4200. Você será redirecionado para a tela de login do Keycloak.
+A aplicação estará disponível em http://localhost:4200. Você será automaticamente redirecionado para a tela de login do Keycloak.
 
-🚧 Próximos Passos
-O projeto ainda está em desenvolvimento. As próximas etapas incluem:
+🚧 Próximos Passos (O Que Vem Por Aí!)
+Ainda há muito trabalho pela frente para completar o desafio:
 
 Aplicar AuthGuard: Proteger todas as rotas internas que exigem autenticação.
 
-Gestão de Partes Interessadas:
+Gestão de Partes Interessadas: Implementar o CRUD completo com formulários reativos, validações, paginação, ordenação e filtros.
 
-Implementar o CRUD completo (Create, Read, Update, Delete).
+Integração com API Pública DataJud: Consumir os endpoints reais da API do DataJud, exibir os dados em tabelas com filtros e ordenação, e implementar a busca.
 
-Desenvolver formulários reativos com validações.
-
-Criar listagem com paginação, ordenação e filtros.
-
-Integração com API Pública DataJud:
-
-Consumir endpoints da API DataJud.
-
-Exibir dados em tabela com paginação, filtro e ordenação.
-
-Implementar busca por tribunal ou classe processual.
-
-Melhorias e Diferenciais:
-
-Tratamento global de erros com interceptores.
-
-Indicadores de carregamento (spinners/skeleton loaders).
-
-Implementação de testes unitários.
-
-Deploy da aplicação.
+Melhorias e Diferenciais: Adicionar tratamento global de erros, indicadores de carregamento (spinners), implementar testes unitários e, quem sabe, fazer o deploy da aplicação!
