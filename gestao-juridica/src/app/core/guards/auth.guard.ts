@@ -14,8 +14,8 @@ import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 })
 export class AuthGuard extends KeycloakAuthGuard {
   constructor(
-    protected override readonly router: Router, // ⬅️ Adicione 'override' aqui
-    protected override readonly keycloak: KeycloakService // ⬅️ E aqui
+    protected override readonly router: Router,
+    protected override readonly keycloak: KeycloakService 
   ) {
     super(router, keycloak);
   }
